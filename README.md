@@ -1,6 +1,6 @@
-# This repository includes the codes and image that were generated for Image Processing and Generative AI Book by Manning Publications.
+# This repository includes the codes and images that were generated for Image Processing and Generative AI Book by Manning Publications.
 # Codes and images will be organized chapter by chapter 
-# The layout of the chapter and the codes and images will be listed under each title:
+# The layout of the chapter, the codes and images will be listed under each title:
 3.1 Human Perception and Its Role in Data Augmentation
 3.2 Depth: Shepard Tables Illusion
 Figure 3.2.1. Shepard’s Tables created by link 3.2.1.
