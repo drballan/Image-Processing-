@@ -29,6 +29,7 @@ Listing 3.6.1 Image Annotation Example
 Figure 3.6.2 The Mueller & Lyer Illusion, Arrows
 3.7 Summary
 3.8 References
+
 # Requirements
 
 - Python 3
