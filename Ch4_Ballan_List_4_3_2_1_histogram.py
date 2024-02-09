@@ -86,5 +86,3 @@ plt.bar([0, 255], hist_window_thresholded[[0, 255]].ravel())
 plt.xlabel('Histogram of\nWindow-Based Adaptive Thresholding')
 
 plt.show()
-
-plt.show()
