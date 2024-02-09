@@ -1,0 +1,56 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load the image
+image = cv2.imread('/Users/meltemballan/Documents/Image_Processing/CH4_Ballan/rachael-r6qybaFV8PU-unsplash.jpg', cv2.IMREAD_GRAYSCALE)
+
+# Define the function for clipping
+def clipping(image, window_sizes):
+    results = []
+    
+    for window_size in window_sizes:
+        # Pad the image with zeros on all sides to handle the borders
+        image_padded = np.pad(image, pad_width=window_size//2, mode='constant', constant_values=0)
+        
+        # Create an empty image to store the result
+        result = np.zeros_like(image)
+        
+        # Iterate over each pixel in the image
+        for i in range(image.shape[0]):
+            for j in range(image.shape[1]):
+                # Select the window around the pixel
+                window = image_padded[i:i+window_size, j:j+window_size]
+                
+                # Calculate the average intensity in the window
+                T = np.mean(window)
+                
+                # Apply the clipping
+                if image[i, j] < T:
+                    result[i, j] = 0
+                else:
+                    result[i, j] = image[i, j]
+        
+        results.append(result)
+    
+    return results
+
+# Define a list of window sizes to try
+window_sizes = [3, 7, 9, 21]
+
+# Apply clipping to the image with each window size
+images_clipped = clipping(image, window_sizes)
+
+# Display the original and clipped images side by side
+plt.figure(figsize=(20, 10))
+
+plt.subplot(1, len(window_sizes) + 1, 1)
+plt.imshow(image, cmap='gray')
+plt.title('Original')
+
+for i, image_clipped in enumerate(images_clipped, start=2):
+    plt.subplot(1, len(window_sizes) + 1, i)
+    plt.imshow(image_clipped, cmap='gray')
+    plt.title(f'Clipped (window size = {window_sizes[i - 2]})')
+
+plt.show()
